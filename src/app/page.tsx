@@ -11,8 +11,6 @@ export type Link = {
 };
 
 export default function Home() {
-    const { links } = useLink()
-
     return (
         <div className="flex flex-col h-screen w-screen items-center justify-center">
             <div className="w-full max-w-md">

@@ -47,7 +47,7 @@ const ShortenerForm = () => {
 
     const [copied, setCopied] = useState<boolean>(false)
 
-    const [dialogOpen, setDialogOpen] = useState<boolean>(true)
+    const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
     const [link, setLink] = useState<Link>()
 
