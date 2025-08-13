@@ -1,8 +1,7 @@
 "use server"
 
 import { prisma } from "@/lib/prisma";
-import { redirect } from 'next/navigation';
-import { useParams } from "next/navigation";
+import { notFound, redirect } from 'next/navigation';
 
 type LinkProps = {
     params: { id: string }
@@ -16,6 +15,8 @@ const LinkPage = async ({ params }: LinkProps) => {
     if(link) {
         return redirect(link.url);
     }
+
+    return notFound();
 }
  
 export default LinkPage;

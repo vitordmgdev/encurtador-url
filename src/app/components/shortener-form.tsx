@@ -34,6 +34,7 @@ import { Separator } from '@/components/ui/separator'
 import { FaXTwitter } from "react-icons/fa6";
 import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from 'next/link'
+import { useLink } from '@/store/link-store'
 
 
 type Link = {
@@ -50,6 +51,8 @@ const ShortenerForm = () => {
     const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
     const [link, setLink] = useState<Link>()
+
+    const { addLink } = useLink();
 
     const ShortenerSchema = z.object({
         url: z.url({
@@ -76,6 +79,8 @@ const ShortenerForm = () => {
 
             if (res.ok) {
                 setLink(data)
+
+                addLink(data)
 
                 form.reset()
 
@@ -120,6 +125,7 @@ const ShortenerForm = () => {
                                         <Input
                                             placeholder="https://exemplo.com.br"
                                             className={cn('rounded-l-full')}
+                                            autoComplete="off"
                                             {...field}
                                         />
                                     </FormControl>
