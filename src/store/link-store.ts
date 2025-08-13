@@ -1,9 +1,9 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 type Link = {
-    id: string,
-    url: string,
+    id: string
+    url: string
     createdAt: Date
 }
 
@@ -21,10 +21,11 @@ export const useLink = create<LinkStore>()(
     persist(
         (set) => ({
             links: [],
-            addLink: (link: Link) => set((state) => ({
-                links: [...state.links, link]
-            }))
+            addLink: (link: Link) =>
+                set((state) => ({
+                    links: [...state.links, link],
+                })),
         }),
-        { name: "link-storage" }
-    ),
+        { name: 'link-storage' }
+    )
 )

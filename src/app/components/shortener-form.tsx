@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
     Form,
@@ -27,15 +27,13 @@ import {
 import {
     Tooltip,
     TooltipContent,
-    TooltipProvider,
     TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { Separator } from '@/components/ui/separator'
-import { FaXTwitter } from "react-icons/fa6";
-import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from 'react-icons/fa6'
+import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa'
 import Link from 'next/link'
 import { useLink } from '@/store/link-store'
-
 
 type Link = {
     id: string
@@ -52,7 +50,7 @@ const ShortenerForm = () => {
 
     const [link, setLink] = useState<Link>()
 
-    const { addLink } = useLink();
+    const { addLink } = useLink()
 
     const ShortenerSchema = z.object({
         url: z.url({
@@ -167,7 +165,9 @@ const ShortenerForm = () => {
                                 <Button
                                     variant="ghost"
                                     size="icon"
-                                    className={cn("rounded-sm text-muted-foreground")}
+                                    className={cn(
+                                        'text-muted-foreground rounded-sm'
+                                    )}
                                     onClick={handleCopy}
                                     aria-label={
                                         copied ? 'Copied' : 'Copy to clipboard'
@@ -196,7 +196,10 @@ const ShortenerForm = () => {
                                                 : 'scale-100 opacity-100'
                                         )}
                                     >
-                                        <CopyIcon size={12} aria-hidden="true" />
+                                        <CopyIcon
+                                            size={12}
+                                            aria-hidden="true"
+                                        />
                                     </div>
                                 </Button>
                             </TooltipTrigger>
@@ -207,15 +210,21 @@ const ShortenerForm = () => {
                     </div>
                 </div>
                 <AlertDialogFooter>
-                    <div className="flex flex-1 gap-2 items-center">
-                        <span className="text-xs text-muted-foreground mr-2">Compartilhar:</span>
+                    <div className="flex flex-1 items-center gap-2">
+                        <span className="text-muted-foreground mr-2 text-xs">
+                            Compartilhar:
+                        </span>
                         <Link
                             href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`http://localhost:3000/${link?.id}`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Compartilhar no Twitter"
                         >
-                            <Button size="icon" className={cn("rounded-sm")} variant="outline">
+                            <Button
+                                size="icon"
+                                className={cn('rounded-sm')}
+                                variant="outline"
+                            >
                                 <FaXTwitter />
                             </Button>
                         </Link>
@@ -225,7 +234,11 @@ const ShortenerForm = () => {
                             rel="noopener noreferrer"
                             aria-label="Compartilhar no Facebook"
                         >
-                            <Button size="icon" className={cn("rounded-sm")} variant="outline">
+                            <Button
+                                size="icon"
+                                className={cn('rounded-sm')}
+                                variant="outline"
+                            >
                                 <FaFacebook />
                             </Button>
                         </Link>
@@ -235,12 +248,20 @@ const ShortenerForm = () => {
                             rel="noopener noreferrer"
                             aria-label="Compartilhar no Whatsapp"
                         >
-                            <Button size="icon" className={cn("rounded-sm")} variant="outline">
+                            <Button
+                                size="icon"
+                                className={cn('rounded-sm')}
+                                variant="outline"
+                            >
                                 <FaWhatsapp />
                             </Button>
                         </Link>
                     </div>
-                    <Button variant="default" className={cn("rounded-sm")} onClick={handleClose}>
+                    <Button
+                        variant="default"
+                        className={cn('rounded-sm')}
+                        onClick={handleClose}
+                    >
                         Fechar
                     </Button>
                 </AlertDialogFooter>
