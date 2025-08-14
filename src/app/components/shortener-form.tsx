@@ -159,7 +159,7 @@ const ShortenerForm = () => {
                         Link encurtado
                     </p>
                     <div className="bg-card flex items-center justify-between rounded-sm border p-1">
-                        <p className="ml-3">{`${process.env.PROTOCOL}://${process.env.HOST}/${link?.id}`}</p>
+                        <p className="ml-3">{`${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_HOST}/${link?.id}`}</p>
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Button
