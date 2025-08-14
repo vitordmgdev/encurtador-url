@@ -13,7 +13,7 @@ import z from 'zod'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { Loader2Icon } from 'lucide-react'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import {
@@ -41,9 +41,13 @@ type Link = {
     createdAt: string
 }
 
-const host = window.location.origin
-
 const ShortenerForm = () => {
+    const [host, setHost] = useState<string>('')
+    
+    useEffect(() => {
+      setHost(window.location.origin)
+    }, [])
+
     const [isPending, startTransition] = useTransition()
 
     const [copied, setCopied] = useState<boolean>(false)
