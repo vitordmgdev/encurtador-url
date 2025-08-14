@@ -41,6 +41,8 @@ type Link = {
     createdAt: string
 }
 
+const host = window.location.origin
+
 const ShortenerForm = () => {
     const [isPending, startTransition] = useTransition()
 
@@ -90,7 +92,7 @@ const ShortenerForm = () => {
     async function handleCopy() {
         try {
             await navigator.clipboard.writeText(
-                `http://localhost:3000/${link?.id}`
+                `${window.location.origin}/${link?.id}`
             )
 
             setCopied(true)
@@ -159,7 +161,7 @@ const ShortenerForm = () => {
                         Link encurtado
                     </p>
                     <div className="bg-card flex items-center justify-between rounded-sm border p-1">
-                        <p className="ml-3">{`${process.env.NEXT_PUBLIC_PROTOCOL}://${process.env.NEXT_PUBLIC_HOST}/${link?.id}`}</p>
+                        <p className="ml-3">{`${host}/${link?.id}`}</p>
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Button
@@ -215,7 +217,7 @@ const ShortenerForm = () => {
                             Compartilhar:
                         </span>
                         <Link
-                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`http://localhost:3000/${link?.id}`)}`}
+                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`${host}/${link?.id}`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Compartilhar no Twitter"
@@ -229,7 +231,7 @@ const ShortenerForm = () => {
                             </Button>
                         </Link>
                         <Link
-                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`http://localhost:3000/${link?.id}`)}`}
+                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`${host}/${link?.id}`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Compartilhar no Facebook"
@@ -243,7 +245,7 @@ const ShortenerForm = () => {
                             </Button>
                         </Link>
                         <Link
-                            href={`https://wa.me/?text=${encodeURIComponent(`http://localhost:3000/${link?.id}`)}`}
+                            href={`https://wa.me/?text=${encodeURIComponent(`${host}/${link?.id}`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Compartilhar no Whatsapp"
